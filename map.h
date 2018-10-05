@@ -9,6 +9,7 @@ class Map {
 public:
     Map(uint32_t w, uint32_t h);
     void Create();
+    void Clear() const;
     void Draw(uint32_t x, uint32_t y);
     void Draw(const Snake &snake);
 private:

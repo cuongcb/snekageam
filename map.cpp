@@ -13,8 +13,8 @@ void Map::Create() {
     << width_ << "), height(" 
     << height_ << ")" << std::endl;
 
-    for (auto h_i = 0; h_i < height_; ++h_i) {
-        for (auto w_i = 0; w_i < width_; ++w_i) {
+    for (uint32_t h_i = 0; h_i < height_; ++h_i) {
+        for (uint32_t w_i = 0; w_i < width_; ++w_i) {
             if (h_i == 0 || h_i == (height_ - 1)) {
                 std::cout << "+";
             }
@@ -32,9 +32,14 @@ void Map::Create() {
     }
 }
 
+void Map::Clear() const {
+    std::cout << "\x1B[2J\n\x1B[H";
+}
+
 void Map::Draw(uint32_t x, uint32_t y) {
-    for (auto h_i = 0; h_i < height_; ++h_i) {
-        for (auto w_i = 0; w_i < width_; ++w_i) {
+    Clear();
+    for (uint32_t h_i = 0; h_i < height_; ++h_i) {
+        for (uint32_t w_i = 0; w_i < width_; ++w_i) {
             if (h_i == 0 || h_i == (height_ - 1)) {
                 std::cout << "+";
             }

@@ -1,26 +1,38 @@
 #pragma once
 
 #include <cstdint>
+#include <memory>
 #include <vector>
 
 namespace snake {
 
+class Pixel;
+
 class Snake {
 public:
-    struct Part {
-        Part(uint32_t pos_x, uint32_t pos_y)
-            : pos_x_(pos_x),
-              pos_y_(pos_y) {}
+    Snake();
 
-        uint32_t pos_x_;
-        uint32_t pos_y_;
-    };
+    // motion
+    void MoveLeft(uint32_t leftborder);
+    void MoveRight(uint32_t rightborder);
+    void MoveUp(uint32_t topborder);
+    void MoveDown(uint32_t bottomborder);
 
-    Snake(Part head);
-    Part head() const;
+    // action
+    void Eat();
 private:
     static constexpr uint32_t kVelocity = 1;
-    std::vector<Part> snake_;
+    static constexpr uint32_t kDefaultX = 1;
+    static constexpr uint32_t kDefaultY = 1;
+
+    typedef std::unique_ptr<Pixel> Snake_Part_t;
+    typedef std::vector<Snake_Part_t> Snake_t;
+
+    Snake_Part_t make_head(uint32_t x, uint32_t y, char symbol = 'o') const;
+
+    Snake_Part_t make_body(uint32_t x, uint32_t y, char symbol = '.') const;
+
+    Snake_t snake_;
 };
 
 }
