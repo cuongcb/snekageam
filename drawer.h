@@ -2,17 +2,32 @@
 
 #include <vector>
 
-#include "object.h"
-
 namespace snake {
+
+class Pixel;
+class Object;
 
 class Drawer {
 public:
-	Drawer();
+	explicit Drawer(uint32_t r, uint32_t c);
 	void Add(const Object &obj); // add a new object to the object list
-	void Validate() const; // display the objects in the object list
+	void Start() const;
+
 private:
-	std::vector<Object> objects_;
+	// Screen Interaction
+	void ClearScreen() const;
+	void NewLine() const;
+	void Rewind() const;
+	void DrawInternal();
+
+
+	typedef std::vector<Object> object_vec_t;
+
+	std::vector<std::vector<Pixel> > image_buffer_;
+	object_vec_t objects_;
+
+	uint32_t row_;
+	uint32_t col_;
 };
 
 } //snake

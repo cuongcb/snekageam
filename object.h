@@ -9,11 +9,15 @@ class Pixel;
 class Object {
 public:
 	Object();
-	virtual void Draw();
-private:
-	typedef std::vector<Pixel> object_vec_t;
+	// explicit Object(std::vector<std::vector<char> > arr);
+
+	virtual void Float(std::vector<std::vector<Pixel> > &buffer);
+	virtual void UpdatePosition();
+	virtual void UpdateDirection();
+protected:
+	typedef std::vector<Pixel> pixel_vec_t;
 	
-	object_vec_t object_;
+	pixel_vec_t object_;
 };
 
 }

@@ -1,17 +1,17 @@
 #pragma once
 #include <cstdint>
 
+#include "object.h"
+
 namespace snake {
 
 class Snake;
 
-class Map {
+class Map: public Object {
 public:
-    Map(uint32_t w, uint32_t h);
+    explicit Map(uint32_t w, uint32_t h);
     void Create();
-    void Clear() const;
-    void Draw(uint32_t x, uint32_t y);
-    void Draw(const Snake &snake);
+    void Draw();
 private:
     uint32_t width_;
     uint32_t height_;

@@ -4,11 +4,17 @@
 
 using namespace snake;
 
+class Drawer;
+
 int main() {
-    Map basic_map(32, 16);
+	Drawer drawer = Drawer();	
+    Map map(32, 16);
     Snake snake(Snake::Part(2, 2));
 
-    basic_map.Draw(snake);
+	drawer.Add(map);
+	drawer.Add(snake);
+	drawer.Add(food);
+	drawer.Start();
 
     char c;
     bool isQuit = false;
@@ -16,27 +22,26 @@ int main() {
 	    switch(c) {
 		case 'a':
 		    snake.MoveLeft();
-		    basic_map.Draw(snake);
+		    map.Draw(snake);
 		    break;
 		case 'd':
 		    snake.MoveRight();
-		    basic_map.Draw(snake);
+		    map.Draw(snake);
 		    break;
 		case 'w':
 		    snake.MoveUp();
-		    basic_map.Draw(snake);
+		    map.Draw(snake);
 		    break;
 		case 's':
 		    snake.MoveDown();
-		    basic_map.Draw(snake);
+		    map.Draw(snake);
 		    break;
 		case 'q':
 		    isQuit = true;
 		    break;
 	    }
-
     }
-    // basic_map.Create();    
+    // map.Create();    
 
     return 0;
 }
