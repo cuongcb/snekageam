@@ -16,4 +16,5 @@ run:
 clean:
 	$(RM) $(OUTPUT)
 	$(RM) $(OUTPUT).dSYM
+	$(RM) *.dSYM
 .phony: clean
