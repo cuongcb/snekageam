@@ -11,10 +11,15 @@ all:
 
 run:
 	./$(OUTPUT)
-.phony: run	
+.phony: run
+
+game:
+	$(CC) $(CPPFLAGS) game.cpp -o game
+.phony: game
 
 clean:
 	$(RM) $(OUTPUT)
 	$(RM) $(OUTPUT).dSYM
 	$(RM) *.dSYM
+	$(RM) game
 .phony: clean
